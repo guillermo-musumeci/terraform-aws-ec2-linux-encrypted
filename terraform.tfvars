@@ -9,7 +9,7 @@ aws_region     = "eu-west-1"
 
 # Web Virtual Machine
 web_instance_type               = "t2.micro"
-web_key_pair                    = "kopicloud-dino"
+web_key_pair                    = "kopicloud-eu-west-1"
 web_associate_public_ip_address = true
 web_root_volume_size            = 20
 web_root_volume_type            = "gp2"
