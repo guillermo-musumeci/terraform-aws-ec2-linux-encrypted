@@ -1,6 +1,6 @@
-#################################
-## Get latest Ubuntu Linux AMI ##
-#################################
+##############################################
+# Get latest Ubuntu Linux AMI with Terraform #
+##############################################
 
 # Get latest Ubuntu Linux Trusty 14.04 AMI
 data "aws_ami" "ubuntu-linux-1404" {
@@ -58,19 +58,37 @@ data "aws_ami" "ubuntu-linux-1904" {
   }
 }
 
+# Get latest Ubuntu Linux Disco 20.04 AMI
+data "aws_ami" "ubuntu-linux-2004" {
+  most_recent = true
+  owners      = ["099720109477"] # Canonical
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
 # output
 output "ubuntu_1404_ami_id" {
-  value = "${data.aws_ami.ubuntu-linux-1404.id}"
+  value = data.aws_ami.ubuntu-linux-1404.id
 }
 
 output "ubuntu_1604_ami_id" {
-  value = "${data.aws_ami.ubuntu-linux-1604.id}"
+  value = data.aws_ami.ubuntu-linux-1604.id
 }
 
 output "ubuntu_1804_ami_id" {
-  value = "${data.aws_ami.ubuntu-linux-1804.id}"
+  value = data.aws_ami.ubuntu-linux-1804.id
 }
 
 output "ubuntu_1904_ami_id" {
-  value = "${data.aws_ami.ubuntu-linux-1904.id}"
+  value = data.aws_ami.ubuntu-linux-1904.id
+}
+
+output "ubuntu_2004_ami_id" {
+  value = data.aws_ami.ubuntu-linux-2004.id
 }
